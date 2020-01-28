@@ -31,7 +31,14 @@ namespace Guessing__Numbers
 
 
             //declare property
-            int correctnumber = 7;
+            //int correctnumber = 7;
+
+            //create a random number
+            Random random = new Random();
+
+            int correctnumber = random.Next(1, 10);
+
+
             int number = 0;
 
             //ask user for number
@@ -41,6 +48,21 @@ namespace Guessing__Numbers
             while (number != correctnumber)
             {
                 string input = Console.ReadLine();
+
+                if(!int.TryParse(input, out number))
+                {
+                    //change the text colour for the header
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    //Write to the console
+                    Console.WriteLine("This isn't a number! Try again...");
+
+                    //Resets coour to default
+                    Console.ResetColor();
+
+                    //keep going
+                    continue;
+                }
 
                 number = Convert.ToInt32(input);
 
@@ -58,9 +80,17 @@ namespace Guessing__Numbers
                 }
 
             }
+      
+            //change the text colour for the header
+            Console.ForegroundColor = ConsoleColor.Green;
 
-            //If correct
-            Console.WriteLine("You are correct");
+            //Write to the console
+            Console.WriteLine("You are Correct!!!!!");
+
+            //Resets coour to default
+            Console.ResetColor();
+
+            Console.ReadLine();
 
         }
     }   
